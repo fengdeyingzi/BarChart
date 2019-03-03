@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout = (RelativeLayout) findViewById(R.id.linearLayout);
         relativeLayout.removeView(llChart);
         Random random = new Random();
+		//添加数据
         while (chartList.size() < 24) {
-            int randomInt = random.nextInt(100);
+            int randomInt = random.nextInt(1000);
             chartList.add((float) randomInt);
         }
         myChartView.setList(chartList);
@@ -96,8 +97,9 @@ public class MainActivity extends AppCompatActivity {
         rlSingle = (RelativeLayout) findViewById(R.id.rl_single);
         singlelist = new ArrayList<>();
         Random random = new Random();
-        while (singlelist.size() < 12) {
-            int randomInt = random.nextInt(100);
+		//添加数据
+        while (singlelist.size() < 120) {
+            int randomInt = random.nextInt(1000);
             singlelist.add((float) randomInt);
         }
 
@@ -114,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
                 llSingle.measure(0, 0);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
-                params.leftMargin = x - 100;
-                if (x - 100 < 0) {
+                params.leftMargin = x - llSingle.getMeasuredWidth()/2;
+                if (x - llSingle.getMeasuredWidth()/2 < 0) {
                     params.leftMargin = 0;
-                } else if (x - 100 > relativeLayout.getWidth() - llSingle.getMeasuredWidth()) {
-                    params.leftMargin = relativeLayout.getWidth() - llSingle.getMeasuredWidth();
+                } else if (x - llSingle.getMeasuredWidth()/2 > mMySingleChartView.getWidth() - llSingle.getMeasuredWidth()) {
+                    params.leftMargin = mMySingleChartView.getWidth() - llSingle.getMeasuredWidth();
                 }
 
                 llSingle.setLayoutParams(params);
